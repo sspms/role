@@ -16,7 +16,7 @@ services:
         dockerfile: zuul.dockerfile
       environment:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaservice:8761/eureka
-        SPRING_CLOUD_CLIENT_IPADDRESS: eurekaservice
+        SPRING_CLOUD_CLIENT_IPADDRESS: zuul
 #        EUREKA_INSTANCE_HOSTNAME: eurekaservice
         SERVER_ADDRESS: zuul
       links:
@@ -34,7 +34,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/community
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaservice:8761/eureka
-      SPRING_CLOUD_CLIENT_IPADDRESS: eurekaservice
+      SPRING_CLOUD_CLIENT_IPADDRESS: user
       SPRING_REDIS_HOST: redisdb
       SERVER_ADDRESS: user
     ports:
@@ -51,7 +51,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/community
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaservice:8761/eureka
-      SPRING_CLOUD_CLIENT_IPADDRESS: eurekaservice
+      SPRING_CLOUD_CLIENT_IPADDRESS: community
       SPRING_REDIS_HOST: redisdb
       SERVER_ADDRESS: community
     ports:
