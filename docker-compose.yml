@@ -1,5 +1,19 @@
 version: '3'
 services:
+  eureka:
+      build:
+        context: ./eureka
+        dockerfile: eureka.dockerfile
+      ports:
+        - "8761:8080"
+  zuul:
+      build:
+        context: ./zuul
+        dockerfile: zuul.dockerfile
+      links:
+        - eureka
+      ports:
+        - "18080:8080"
   user:
     build:
       context: ./user
@@ -7,12 +21,13 @@ services:
     links:
       - mysqldb
       - redisdb
+      - eureka
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/community
       SPRING_REDIS_HOST: redisdb
       SERVER_ADDRESS: user
     ports:
-      - "18080:8080"
+      - "8081:8080"
   community:
     build:
       context: ./community
@@ -21,12 +36,13 @@ services:
       - user
       - mysqldb
       - redisdb
+      - eureka
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/community
       SPRING_REDIS_HOST: redisdb
       SERVER_ADDRESS: community
     ports:
-      - "18081:8080"
+      - "8082:8080"
   redisdb:
     image: registry.docker-cn.com/library/redis:alpine
     ports:
