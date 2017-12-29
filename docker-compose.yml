@@ -1,12 +1,13 @@
 version: '3'
 services:
-  eurekaserver:
+  eurekaservice:
       build:
         context: ./eureka
         dockerfile: eureka.dockerfile
       environment:
-        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8761/eureka
-        SERVER_ADDRESS: eurekaserver
+        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaservice:8761/eureka
+        EUREKA_INSTANCE_HOSTNAME: eurekaservice
+        SERVER_ADDRESS: eurekaservice
       ports:
         - "8761:8761"
   zuul:
@@ -14,10 +15,12 @@ services:
         context: ./zuul
         dockerfile: zuul.dockerfile
       environment:
-        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8761/eureka
+        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaservice:8761/eureka
+        SPRING_CLOUD_CLIENT_IPADDRESS: eurekaservice
+#        EUREKA_INSTANCE_HOSTNAME: eurekaservice
         SERVER_ADDRESS: zuul
       links:
-        - eureka
+        - eurekaservice
       ports:
         - "18080:8080"
   user:
@@ -27,10 +30,11 @@ services:
     links:
       - mysqldb
       - redisdb
-      - eureka
+      - eurekaservice
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/community
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8761/eureka
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaservice:8761/eureka
+      SPRING_CLOUD_CLIENT_IPADDRESS: eurekaservice
       SPRING_REDIS_HOST: redisdb
       SERVER_ADDRESS: user
     ports:
@@ -43,10 +47,11 @@ services:
       - user
       - mysqldb
       - redisdb
-      - eureka
+      - eurekaservice
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/community
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8761/eureka
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaservice:8761/eureka
+      SPRING_CLOUD_CLIENT_IPADDRESS: eurekaservice
       SPRING_REDIS_HOST: redisdb
       SERVER_ADDRESS: community
     ports:
@@ -63,5 +68,3 @@ services:
       - /var/lib/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
-
-
