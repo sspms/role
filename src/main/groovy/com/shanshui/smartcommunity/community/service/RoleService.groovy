@@ -63,44 +63,26 @@ class RoleService {
 
     List<User> getHouseholdMemeber(Household household) {
         List<Owner> roles = household.id ? ownershipRepository.getAllByHousehold(household.id) : null
-        if (!roles) {
+        if (!roles || roles.isEmpty()) {
             return null
         }
-        List<User> family = []
-        int[] ids = roles.user.id
-        ids.each { final id ->
-            family << userClient.get(id)
-        }
-        // TODO: fetch from user service to get entire user information
-        family
+        userClient.get(roles.user.id)
     }
 
     List<User> getHouseholdTenant(Household household) {
         List<Tenant> roles = household.id ? tenantshipRepository.getAllByHousehold(household.id) : null
-        if (!roles) {
+        if (!roles || roles.isEmpty()) {
             return null
         }
-        List<User> family = []
-        int[] ids = roles.user.id
-        ids.each { final id ->
-            family << userClient.get(id)
-        }
-        // TODO: fetch from user service to get entire user information
-        family
+        userClient.get(roles.user.id)
     }
 
     List<User> getRenter(User user) {
         List<Tenant> roles = user.id ? tenantshipRepository.getTenants(user.id) : null
-        if (!roles) {
+        if (!roles || roles.isEmpty()) {
             return null
         }
-        List<User> family = []
-        int[] ids = roles.user.id
-        ids.each { final id ->
-            family << userClient.get(id)
-        }
-        // TODO: fetch from user service to get entire user information
-        family
+        userClient.get(roles.user.id)
     }
     //List<Owner>
     private static final Logger LOGGER = LoggerFactory.getLogger(RoleService.class)
