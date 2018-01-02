@@ -1,4 +1,4 @@
-package com.shanshui.smartcommunity.community.service
+package com.shanshui.smartcommunity.role.service
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
 import com.fasterxml.jackson.annotation.PropertyAccessor
@@ -42,7 +42,7 @@ class RedisConfig extends CachingConfigurerSupport {
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
         RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
         //设置缓存过期时间
-        rcm.setDefaultExpiration(300);//秒
+        rcm.setDefaultExpiration(900);//秒
         return rcm;
     }
 

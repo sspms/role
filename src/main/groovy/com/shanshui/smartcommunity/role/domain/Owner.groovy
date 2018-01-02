@@ -1,4 +1,4 @@
-package com.shanshui.smartcommunity.community.domain
+package com.shanshui.smartcommunity.role.domain
 
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -6,8 +6,8 @@ import javax.persistence.EnumType
 import javax.persistence.Enumerated
 
 @Entity
-class Tenant extends Resident {
+class Owner extends Resident {
     @Enumerated(EnumType.STRING)
     @Column(updatable = false, insertable = false)
-    RoleType role = RoleType.PROPERTY_RENTER
+    RoleType role = RoleType.PROPERTY_OWNER
 }

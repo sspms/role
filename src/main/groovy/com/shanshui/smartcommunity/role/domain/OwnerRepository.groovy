@@ -1,4 +1,4 @@
-package com.shanshui.smartcommunity.community.domain
+package com.shanshui.smartcommunity.role.domain
 
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
@@ -9,7 +9,7 @@ import org.springframework.data.repository.CrudRepository
  */
 public interface OwnerRepository extends CrudRepository<Owner, Long> {
 
-    @Query('select r from Owner r where r.community.id = ?1 and r.user.id = ?2')
+    @Query('select r from Owner r where r.community.id = ?1 and r.user.id = ?2 and r.valid = true')
     List<Owner> findAll(long communityId, long userId)
 
     @Query('select r from Owner r where r.user.id = ?1')
@@ -34,7 +34,10 @@ public interface OwnerRepository extends CrudRepository<Owner, Long> {
     boolean isValid(long roleId)
 
     @Modifying
-    @Query('update Owner r set r.expireDate = ?2 where r.id = ?1')
+    @Query('update Owner r set r.expireDate = ?2 r.valid = false where r.id = ?1')
     void updateExpireDate(long id, Date expire)
 
+    @Modifying
+    @Query('update Owner r set r.invalid = false where r.id = ?1')
+    void invalidate(long id)
 }

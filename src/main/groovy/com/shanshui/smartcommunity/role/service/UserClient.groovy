@@ -1,3 +1,4 @@
+package com.shanshui.smartcommunity.role.service
 //package com.shanshui.smartcommunity.community.service
 //
 //import org.springframework.cache.annotation.Cacheable

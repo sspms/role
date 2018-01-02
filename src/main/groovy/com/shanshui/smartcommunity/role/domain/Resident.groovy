@@ -1,4 +1,7 @@
-package com.shanshui.smartcommunity.community.domain
+package com.shanshui.smartcommunity.role.domain
+
+import com.shanshui.smartcommunity.community.domain.Building
+import com.shanshui.smartcommunity.community.domain.Household
 
 import javax.persistence.Entity
 import javax.persistence.Inheritance
