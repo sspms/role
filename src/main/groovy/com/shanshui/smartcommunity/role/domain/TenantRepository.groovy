@@ -35,7 +35,7 @@ public interface TenantRepository extends CrudRepository<Tenant, Long> {
     void updateValid(long id, boolean valid)
 
     @Modifying
-    @Query('update Tenant r set r.expireDate = ?2 and r.valid = false where r.id = ?1')
+    @Query('update Tenant r set r.expireDate = ?2, r.valid = false where r.id = ?1')
     void updateExpireDate(long id, Date expire)
 
 }

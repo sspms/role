@@ -26,10 +26,10 @@ public interface SupervisorRepository extends CrudRepository<Supervisor, Long> {
     void updateValid(long id, boolean valid)
 
     @Modifying
-    @Query('update Supervisor r set r.expireDate = ?2 and r.valid = false where r.id = ?1')
+    @Query('update Supervisor r set r.expireDate = ?2 where r.id = ?1')
     void updateExpireDate(long id, Date expire)
 
     @Modifying
-    @Query('update Supervisor r set r.invalid = false where r.id = ?1')
+    @Query('update Supervisor r set r.valid = false, r.valid = false where r.id = ?1')
     void invalidate(long id)
 }

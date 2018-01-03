@@ -34,7 +34,7 @@ public interface OwnerRepository extends CrudRepository<Owner, Long> {
     boolean isValid(long roleId)
 
     @Modifying
-    @Query('update Owner r set r.expireDate = ?2 r.valid = false where r.id = ?1')
+    @Query('update Owner r set r.expireDate = :expire, r.valid = false where r.id = :id')
     void updateExpireDate(long id, Date expire)
 
 }
