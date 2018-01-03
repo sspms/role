@@ -22,7 +22,7 @@ pipeline {
                     withEnv([
                             'MVN_HOME=/usr/maven'
                     ]) {
-                        sh """${MVN_HOME}/bin/mvn install"""
+                        sh """${MVN_HOME}/bin/mvn clean install"""
                     }
                 }
             }
