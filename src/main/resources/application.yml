@@ -1,7 +1,7 @@
 # Server settings (ServerProperties)
 server:
-  port: 8081
-  address: 127.0.0.1
+  port: 8080
+  address: localhost
   sessionTimeout: 30
   contextPath: /
 
@@ -12,11 +12,26 @@ server:
     remoteIpHeader: x-forwarded-for
     basedir:
     backgroundProcessorDelay: 30 # secs
-
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ipAddress}
+    preferIpAddress:  false
+    ipAddress: 127.0.0.1
+    instance-id:  ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone:  http://localhost:8761/eureka/
 security:
   basic:
     enabled: false
 
 spring:
+  cloud:
+    client:
+      ipAddress: 127.0.0.1
+  application:
+    name: role
   profiles:
     active: ci
