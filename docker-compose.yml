@@ -44,7 +44,6 @@ services:
       context: ./community
       dockerfile: community.dockerfile
     links:
-      - user
       - mysqldb
       - redisdb
       - eurekaservice
@@ -56,6 +55,22 @@ services:
       SERVER_ADDRESS: community
     ports:
       - "8083:8080"
+  role:
+    build:
+      context: ./role
+      dockerfile: role.dockerfile
+    links:
+      - mysqldb
+      - redisdb
+      - eurekaservice
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/community
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaservice:8761/eureka
+      SPRING_CLOUD_CLIENT_IPADDRESS: role
+      SPRING_REDIS_HOST: redisdb
+      SERVER_ADDRESS: role
+    ports:
+      - "8084:8080"
   redisdb:
     image: registry.docker-cn.com/library/redis:alpine
     ports:
