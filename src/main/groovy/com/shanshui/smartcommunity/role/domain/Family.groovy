@@ -19,8 +19,8 @@ class Family implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE)
     Long id
 
-    User adder
-    User addee
+    long adder
+    long addee
 
     @Enumerated(EnumType.STRING)
     @Column(updatable = true, insertable = true)

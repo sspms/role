@@ -16,24 +16,22 @@ abstract class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE)
     Long id
 
-    User user
+    long user // user id
 
-    Community community
+    long community // community id
 
     @Enumerated(EnumType.STRING)
-    @Column(updatable = false, insertable = false)
     RoleType role
 
     @Column(updatable = false)
-    User addedBy
+    long addedBy // user id
 
     @Enumerated(EnumType.STRING)
-    @Column(updatable = false, insertable = false)
     RoleType addedByRole
 
-    @Column(updatable = false, insertable = false)
     @DateTimeFormat(style = 'yyyy-MM-dd HH:mm:ss.SSS')
     Date startDate
+
     @Column(updatable = true, insertable = true)
     @DateTimeFormat(style = 'yyyy-MM-dd HH:mm:ss.SSS')
     Date expireDate

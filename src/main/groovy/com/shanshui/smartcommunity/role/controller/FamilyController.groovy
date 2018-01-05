@@ -1,5 +1,6 @@
 package com.shanshui.smartcommunity.role.controller
 
+import com.shanshui.smartcommunity.role.domain.Family
 import com.shanshui.smartcommunity.role.service.RoleService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
@@ -22,13 +23,19 @@ class FamilyController {
     @RequestMapping(value = '/{id}', method = RequestMethod.GET)
     @ResponseBody
     def getFamily(@PathVariable('id') Long id) {
-        id ? roleService.relationRepository.findAllFamilyMemeber(id, true) : null
+        id ? roleService.familyRepository.findAllFamilyMemeber(id, true) : null
+    }
+
+    @RequestMapping(value = '/{id}', method = RequestMethod.POST)
+    @ResponseBody
+    def addFamily(@PathVariable('id') Long id, @RequestBody Family family) {
+        id && family ? roleService.addFamily(family) : new IllegalArgumentException('user id or family could not be null')
     }
 
     @RequestMapping(value = '/{id}/adder', method = RequestMethod.GET)
     @ResponseBody
     def getFamilyAdder(@PathVariable('id') Long id) {
-        id ? roleService.relationRepository.findAdder(id, true) : null
+        id ? roleService.familyRepository.findAdder(id, true) : null
     }
 
     public static void main(String[] args) {

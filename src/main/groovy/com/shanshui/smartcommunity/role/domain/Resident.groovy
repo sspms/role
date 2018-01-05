@@ -14,6 +14,6 @@ import javax.persistence.InheritanceType
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 abstract class Resident extends Role {
 
-    Building building
-    Household household
+    long building
+    long household
 }

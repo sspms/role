@@ -9,12 +9,12 @@ import org.springframework.data.repository.CrudRepository
  */
 public interface FamilyRepository extends CrudRepository<Family, Long> {
 
-    @Query('select r from Family r where r.adder.id = ?1 and r.valid = ?2')
+    @Query('select r from Family r where r.adder = ?1 and r.valid = ?2')
     List<Family> findAll(long userId, boolean isValid)
 
-    @Query('select r from Family r where r.addee.id = ?1 and r.valid = ?2')
+    @Query('select r from Family r where r.addee = ?1 and r.valid = ?2')
     List<Family> findAdder(long userId, boolean isValid)
 
-    @Query('select r from Family r where r.adder.id = ?1 and r.valid = ?2 and (r.type = SPOUSE or r.type = PARENT or r.type = CHILDREN)')
+    @Query("select r from Family r where r.adder = ?1 and r.valid = ?2 and (r.type = 'SPOUSE' or r.type = 'PARENT' or r.type = 'CHILDREN')")
     List<Family> findAllFamilyMemeber(long userId, boolean isValid)
 }
