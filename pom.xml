@@ -28,7 +28,13 @@
     <dependencies>
         <dependency>
             <groupId>com.shanshui.smartcommunity</groupId>
-            <artifactId>feignclient</artifactId>
+            <artifactId>user</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.shanshui.smartcommunity</groupId>
+            <artifactId>community</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>

@@ -1,7 +1,7 @@
 package com.shanshui.smartcommunity.role.service
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.shanshui.smartcommunity.clients.UserClient
+import com.shanshui.smartcommunity.user.client.UserClient
 import com.shanshui.smartcommunity.community.domain.Household
 import com.shanshui.smartcommunity.role.domain.Family
 import com.shanshui.smartcommunity.role.domain.OwnerRepository

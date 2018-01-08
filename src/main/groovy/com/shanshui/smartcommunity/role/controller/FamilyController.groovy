@@ -1,5 +1,6 @@
 package com.shanshui.smartcommunity.role.controller
 
+import com.shanshui.smartcommunity.role.client.FamilyClient
 import com.shanshui.smartcommunity.role.domain.Family
 import com.shanshui.smartcommunity.role.service.RoleService
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping('/api/v1/family')
 @EnableAutoConfiguration
 @EnableCaching
-class FamilyController {
+class FamilyController implements FamilyClient {
 
     @Autowired
     RoleService roleService

@@ -1,5 +1,6 @@
 package com.shanshui.smartcommunity.role.controller
 
+import com.shanshui.smartcommunity.role.client.RoleClient
 import com.shanshui.smartcommunity.role.domain.Role
 import com.shanshui.smartcommunity.role.service.RoleService
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletRequest
 @RequestMapping('/api/v1/roles')
 @EnableAutoConfiguration
 @EnableCaching
-class RoleController {
+class RoleController implements RoleClient {
 
     @Autowired
     RoleService roleService
@@ -32,7 +33,8 @@ class RoleController {
     @ResponseBody
     def addRole(
             @PathVariable('id') Long cid,
-            @PathVariable('uid') Long uid, @RequestHeader('class') String cls, HttpServletRequest req){//@RequestBody Role role) {
+            @PathVariable('uid') Long uid, @RequestHeader('class') String cls, HttpServletRequest req) {
+//@RequestBody Role role) {
         //def form = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         // TODO: validate first
         cid && uid && cls ? roleService.addRole(req.getReader(), cls) : null
@@ -40,7 +42,9 @@ class RoleController {
 
     @RequestMapping(value = '/{id}/user/{uid}/invalidate', method = RequestMethod.POST)
     @ResponseBody
-    def invalidateRole(@PathVariable('id') Long cid, @PathVariable('uid') Long uid, @RequestHeader('class') String cls, HttpServletRequest req) {
+    def invalidateRole(
+            @PathVariable('id') Long cid,
+            @PathVariable('uid') Long uid, @RequestHeader('class') String cls, HttpServletRequest req) {
 
         cid && uid ? roleService.setInvalid(req.getReader(), cls) : null
     }
