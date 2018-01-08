@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 import org.springframework.cloud.netflix.feign.EnableFeignClients
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = ['com.shanshui.smartcommunity.user.client'])
+@EnableFeignClients(basePackages = ['com.shanshui.smartcommunity.user.client', 'com.shanshui.smartcommunity.community.client'])
 @EnableDiscoveryClient
 class RoleApplication {
 
