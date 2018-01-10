@@ -12,5 +12,5 @@ import javax.persistence.Enumerated
 class Supervisor extends Role {
     @Enumerated(EnumType.STRING)
     @Column(updatable = false, insertable = false)
-    RoleType role = RoleType.NEIGHBORHOOD_COMMITTEE_MEMBER
+    RoleType role = RoleType.NEIGHBORHOOD_COMMITTEE
 }

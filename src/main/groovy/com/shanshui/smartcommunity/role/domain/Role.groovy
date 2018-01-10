@@ -1,7 +1,5 @@
 package com.shanshui.smartcommunity.role.domain
 
-import com.shanshui.smartcommunity.community.domain.Community
-import com.shanshui.smartcommunity.user.domain.User
 import org.springframework.format.annotation.DateTimeFormat
 
 import javax.persistence.*

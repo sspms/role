@@ -8,23 +8,15 @@ enum RoleType {
             'PLT_ADMIN',
             'platform administrator, could certify property company and PROPERTY_ADMIN'
     ),
-    PROPERTY_ADMIN(
-            'PROPERTY_ADMIN',
-            'property company administrator, could certify property owners'
-    ),
-    PROPERTY_WORKER(
+    PROPERTY_MANAGEMENT(
             'PROPERTY_WORKER',
             'property company workers, could take repairment orders'
     ),
-    NEIGHBORHOOD_COMMITTEE_MEMBER(
+    NEIGHBORHOOD_COMMITTEE(
             'NEIGHBORHOOD_COMMITTEE_MEMBER',
             'member of neighborhood committee, which is lead by government, supervisor of the owner committee and property company'
     ),
-    PROPERTY_OWNER_COMMITTEE_LEAD(
-            'PROPERTY_OWNER_COMMITTEE_LEAD',
-            'lead of property owner committee, could vote for some decision on behave of owners'
-    ),
-    PROPERTY_OWNER_COMMITTEE_MEMEBER(
+    PROPERTY_OWNER_COMMITTEE(
             'PROPERTY_OWNER_COMMITTEE_MEMEBER',
             'member of property owner committee, could vote for some decision on behave of owners'
     ),
@@ -39,10 +31,6 @@ enum RoleType {
     PROPERTY_RENTER(
             'PROPERTY_RENTER',
             'property renter, certified by PROPERTY_OWNER, could consume some services provided for renter, could not consume some service for owner'
-    ),
-    USER(
-            'USER',
-            'user of the software, could consume some service for user'
     );
 
     String name
