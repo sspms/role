@@ -1,7 +1,6 @@
 package com.shanshui.smartcommunity.role.controller
 
 import com.shanshui.smartcommunity.role.client.RoleClient
-import com.shanshui.smartcommunity.role.domain.Role
 import com.shanshui.smartcommunity.role.service.RoleService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication

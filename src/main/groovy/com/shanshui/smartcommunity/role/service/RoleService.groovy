@@ -1,17 +1,9 @@
 package com.shanshui.smartcommunity.role.service
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.shanshui.smartcommunity.user.client.UserClient
 import com.shanshui.smartcommunity.community.domain.Household
-import com.shanshui.smartcommunity.role.domain.Family
-import com.shanshui.smartcommunity.role.domain.OwnerRepository
-import com.shanshui.smartcommunity.role.domain.FamilyRepository
-import com.shanshui.smartcommunity.role.domain.SupervisorRepository
-import com.shanshui.smartcommunity.role.domain.Owner
-import com.shanshui.smartcommunity.role.domain.Role
-import com.shanshui.smartcommunity.role.domain.Supervisor
-import com.shanshui.smartcommunity.role.domain.Tenant
-import com.shanshui.smartcommunity.role.domain.TenantRepository
+import com.shanshui.smartcommunity.role.domain.*
+import com.shanshui.smartcommunity.user.client.UserClient
 import com.shanshui.smartcommunity.user.domain.User
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -34,7 +26,7 @@ class RoleService {
     TenantRepository tenantRepository
 
     @Autowired
-    SupervisorRepository supervisorRepository
+    NeighborhoodCommitteeMemberRepository supervisorRepository
 
     @Autowired
     FamilyRepository familyRepository
@@ -75,7 +67,7 @@ class RoleService {
         }
     }
 
-    def add(Supervisor role) {
+    def add(NeighborhoodCommitteeMember role) {
         def id = role.id
         if (id) {
             supervisorRepository.findOne(id) ? null : supervisorRepository.save(role)
@@ -148,7 +140,7 @@ class RoleService {
         }
     }
 
-    def invalidate(Supervisor role) {
+    def invalidate(NeighborhoodCommitteeMember role) {
         def id = role.id
         if (id) {
             supervisorRepository.updateExpireDate(role.id, new Date())

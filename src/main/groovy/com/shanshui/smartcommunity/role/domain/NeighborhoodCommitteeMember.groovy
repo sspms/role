@@ -1,17 +1,16 @@
 package com.shanshui.smartcommunity.role.domain
 
-import javax.persistence.Entity
-import javax.persistence.EnumType
-import javax.persistence.Enumerated
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.ManyToOne
+import javax.persistence.*
 
 /**
  * Created by I336253 on 11/26/2017.
  */
 @Entity
 class NeighborhoodCommitteeMember extends Role {
+    @Enumerated(EnumType.STRING)
+    @Column(updatable = false, insertable = false)
+    RoleType role = RoleType.NEIGHBORHOOD_COMMITTEE
+
     @ManyToOne
     NeighborhoodCommittee committee
 
