@@ -11,5 +11,5 @@ class OwnerCommittee extends Organizaton {
     @ManyToOne
     NeighborhoodCommittee supervisor
 
-    List<OwnerCommitteeMember> memebers
+    //List<OwnerCommitteeMember> memebers
 }

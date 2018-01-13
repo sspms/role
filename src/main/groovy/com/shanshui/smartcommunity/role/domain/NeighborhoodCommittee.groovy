@@ -9,6 +9,6 @@ import javax.persistence.Entity
 class NeighborhoodCommittee extends Organizaton {
     String location
     String workingHour
-    List<OwnerCommittee> ownerCommittees
-    List<NeighborhoodCommitteeMember> memebers
+    //List<OwnerCommittee> ownerCommittees
+    //List<NeighborhoodCommitteeMember> memebers
 }

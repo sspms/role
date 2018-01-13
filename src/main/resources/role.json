@@ -1,0 +1,12 @@
+{
+  "user": {"id":"1"},
+  "community": {"id":1},
+  "households": null,
+  "building": null,
+  "role": "PROPERTY_WORKER",
+  "addedBy": null,
+  "addedByRole": "PROPERTY_WORKER",
+  "startDate": null,
+  "expireDate": null,
+  "valid": true
+}
